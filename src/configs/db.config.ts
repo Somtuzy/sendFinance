@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { logger } from './constants.config';
+import { logger } from './exports.config';
 
 export default (function database() {
   const startdb = () => {
