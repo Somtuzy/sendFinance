@@ -1,5 +1,7 @@
 import { Application, Request, Response } from 'express';
-import authRouter from './auth.route';
+import userRouter from './user.route';
+import adminRouter from './admin.route';
+import { CreateAdminRateLimit } from '../configs/middleware.config';
 
 import constants from '../configs/constants.config';
 
@@ -12,5 +14,6 @@ export default (app: Application) => {
       message: 'App is working properly',
     });
   });
-  app.use(`${apiVersion}/`, authRouter);
+  app.use(`${apiVersion}/`, userRouter);
+  app.use(`${apiVersion}/`, CreateAdminRateLimit, adminRouter);
 };
