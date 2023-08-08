@@ -19,6 +19,15 @@ export const adminRateLimit = rateLimit({
   },
 });
 
+// / Apply rate limiting middleware with a limit of 3 requests per hour for admins
+export const CreateAdminRateLimit = rateLimit({
+  windowMs: 60000 * 60,
+  max: 3,
+  message: {
+    error: 'You have made too many requests, please try again later.',
+  },
+});
+
 export const morganConfig = `:date[iso] :method :url :status :response-time ms :remote-addr :http-version :referrer :user-agent`
 
 export const corsConfig: CorsOptions = {

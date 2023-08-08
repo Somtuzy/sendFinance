@@ -25,7 +25,3 @@ export const checkTokenValidity = async (token: string): Promise<boolean> => {
       }
     return true
 }
-
-export const generateOTP = async (payload: Partial <IUser>): Promise<string> => {
-    return jwt.sign(payload, secretKey, {expiresIn: expiresIn})  
-}
