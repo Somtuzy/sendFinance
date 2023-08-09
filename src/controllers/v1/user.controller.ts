@@ -1,17 +1,18 @@
 import { Request, Response } from 'express';
-import userService from '../services/user.service';
-import { hashPassword, verifyPassword } from '../utils/password.util';
-import { generateToken } from '../utils/token.util';
-import generateRandomAvatar from '../utils/avatar.util';
-import { client } from '../configs/exports.config';
-import { IUser } from '../interfaces/user.interface';
+import userService from '../../services/v1/user.service';
+import { hashPassword, verifyPassword } from '../../utils/password.util';
+import { generateToken } from '../../utils/token.util';
+import generateRandomAvatar from '../../utils/avatar.util';
+import { client } from '../../configs/exports.config';
+import { IUser } from '../../interfaces/v1/user.interface';
 import { v4 as uuidv4 } from 'uuid';
+import { set } from 'lodash';
 
 class AuthenticateController {
   async signup(req: Request, res: Response) {
     // Checks for existing user
     const existingUser = await userService.findOne({
-      username: req.body.username,
+      email: req.body.email,
     });
 
     if (existingUser && existingUser.deleted === true) {
@@ -36,10 +37,9 @@ class AuthenticateController {
 
     // Creates a new user
     const newUser = await userService.create({
-      fullname: req.body.fullname,
-      username: req.body.username,
-      email: req.body.email,
-      phoneNumber: req.body.phoneNumber,
+      fullname: <string>req.body.fullname,
+      email: <string>req.body.email,
+      phoneNumber: <string>req.body.phoneNumber,
       password: hashedPassword,
       avatar: avatarUrl,
     });
@@ -69,25 +69,25 @@ class AuthenticateController {
     const {
       _id,
       fullname,
-      username,
       avatar,
       email,
       phoneNumber,
       role,
       verified,
       deleted,
+      account
     }: IUser = newUser.toObject();
 
     const signedUpUser = {
       _id,
       fullname,
-      username,
       avatar,
       email,
       phoneNumber,
       role,
       verified,
       deleted,
+      account
     };
 
     console.log('Signed up User:', signedUpUser);
@@ -103,7 +103,7 @@ class AuthenticateController {
   async login(req: Request, res: Response) {
     // Checks if the user already exists
     const existingUser = await userService.findOne({
-      username: <string>req.body.username,
+      email: <string>req.body.email,
     });
 
     // Returns a message if user doesn't exist
@@ -157,25 +157,25 @@ class AuthenticateController {
     const {
       _id,
       fullname,
-      username,
       avatar,
       email,
       phoneNumber,
       role,
       verified,
       deleted,
+      account
     }: IUser = existingUser.toObject();
 
     const loggedInUser = {
       _id,
       fullname,
-      username,
       avatar,
       email,
       phoneNumber,
       role,
       verified,
       deleted,
+      account
     };
 
     console.log('Logged in User:', loggedInUser);

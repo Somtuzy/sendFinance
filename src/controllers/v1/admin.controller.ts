@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
-import userService from '../services/user.service';
-import { verifyPassword } from '../utils/password.util';
-import { generateToken } from '../utils/token.util';
-import { client } from '../configs/exports.config';
-import { IUser } from '../interfaces/user.interface';
+import userService from '../../services/v1/user.service';
+import { verifyPassword } from '../../utils/password.util';
+import { generateToken } from '../../utils/token.util';
+import { client } from '../../configs/exports.config';
+import { IUser } from '../../interfaces/v1/user.interface';
 import { v4 as uuidv4 } from 'uuid';
 
 class AdminController {
@@ -18,7 +18,7 @@ class AdminController {
 
     // Checks if the user already exists
     const existingUser = await userService.findOne({
-      username: <string>req.user.username,
+      _id: req.user._id,
     });
 
     // Returns a message if user doesn't exist
@@ -76,7 +76,7 @@ class AdminController {
     const {
       _id,
       fullname,
-      username,
+      uniqueTag,
       avatar,
       email,
       phoneNumber,
@@ -88,7 +88,7 @@ class AdminController {
     const loggedInAdmin = {
       _id,
       fullname,
-      username,
+      uniqueTag,
       avatar,
       email,
       phoneNumber,
