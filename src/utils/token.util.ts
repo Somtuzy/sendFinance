@@ -1,5 +1,5 @@
 import jwt, { JwtPayload } from 'jsonwebtoken' 
-import { IUser } from '../interfaces/user.interface'
+import { IUser } from '../interfaces/v1/user.interface'
 
 const secretKey = <string>process.env.JWT_SECRET_KEY
 const expiresIn = <string>process.env.JWT_EXPIRES_IN

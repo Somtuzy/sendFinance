@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { logger } from '../configs/exports.config';
+import { logger } from '../../configs/exports.config';
 
 export default (
   error: Error,

@@ -1,5 +1,5 @@
-import { model, ObjectId, Schema } from "mongoose";
-import {IUser} from "../interfaces/user.interface";
+import { model, Schema } from "mongoose";
+import {IUser} from "../../interfaces/v1/user.interface";
 
 const userSchema = new Schema<IUser>(
   {
@@ -12,13 +12,6 @@ const userSchema = new Schema<IUser>(
       maxlength: 40,
     },
     avatar: String,
-    username: {
-      type: String,
-      lowercase: true,
-      required: true,
-      unique: true,
-      trim: true,
-    },
     email: {
       type: String,
       lowercase: true,
@@ -33,14 +26,20 @@ const userSchema = new Schema<IUser>(
     },
     password: {
       type: String,
-      required: false,
+      required: true,
       minlength: 8,
+    },
+    account: {
+        type: Schema.Types.ObjectId,
+        ref: "Accounts",
     },
     birthday: {
       type: String,
+      required: false
     },
     address: {
       type: String,
+      required: false
     },
     role: {
       type: String,
