@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import _ from 'lodash';
-import { ICreateUser } from '../interfaces/user.interface';
+import { ICreateUser } from '../../interfaces/v1/user.interface';
 
 const validator =
   (schema: { validateAsync: (arg0: ICreateUser) => any }, source = 'body') =>

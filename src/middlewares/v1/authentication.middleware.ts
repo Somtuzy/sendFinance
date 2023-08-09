@@ -3,11 +3,11 @@ import {
   verifyToken,
   checkTokenValidity,
   generateToken,
-} from '../utils/token.util';
-import userService from '../services/user.service';
+} from '../../utils/token.util';
+import userService from '../../services/v1/user.service';
 import { JwtPayload } from 'jsonwebtoken';
-import { client } from '../configs/exports.config';
-import { IUser } from '../interfaces/user.interface';
+import { client } from '../../configs/exports.config';
+import { IUser } from '../../interfaces/v1/user.interface';
 
 const authenticate = async (
   req: Request,
@@ -85,7 +85,7 @@ const authenticate = async (
 
     console.log(`Authenticated User: 
     Fullname: ${user.fullname}
-    Username: ${user.username}`);
+    User Id: ${user._id}`);
 
     // The user is then added to the request
     req.user = user;
