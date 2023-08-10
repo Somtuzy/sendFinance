@@ -4,9 +4,9 @@
   "description": "a basic bank versioned API.",
   "main": "server.js",
   "scripts": {
-    "dev": "tsc && nodemon -r dotenv/config ./dist/server.js",
+    "dev": "tsc && nodemon -r dotenv/config ./build/server.js",
     "build": "tsc",
-    "start": "npm i && node ./dist/server.js"
+    "start": "npm i && node ./build/server.js"
   },
   "repository": {
     "type": "git",
