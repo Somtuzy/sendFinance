@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
-import { logger } from './exports.config';
+import constants from './constants.config';
+
+const logger = constants.LOGGER
 
 export default (function database() {
   const startdb = () => {
@@ -9,10 +11,10 @@ export default (function database() {
         dbName: 'sendFinance',
       })
       .then(() => {
-        logger.info('Database connection successful...');
+        logger.info('Successfully connected to zha database...');
       })
       .catch((err) => {
-        logger.error('Error connecting to the database:', err);
+        logger.error('There was an error connecting to zha database:', err);
         logger.info('Reconnecting to database...');
         startdb();
       });

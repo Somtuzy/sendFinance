@@ -6,6 +6,8 @@ declare namespace Express {
       uniqueTag: string;
       avatar: string;
       email: string;
+      birthday?: string;
+      address?: string;
       phoneNumber: string;
       role: string;
       verified: boolean;
