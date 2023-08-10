@@ -1,5 +1,5 @@
 import express from 'express';
-import indexMiddleware from './middlewares/v1/index.middleware';
+import indexMiddleware from './middlewares/index.middleware';
 
 const app = express();
 
