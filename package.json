@@ -2,7 +2,7 @@
   "name": "sendfinance",
   "version": "1.0.0",
   "description": "a basic bank versioned API.",
-  "main": "./dist/server.js",
+  "main": "server.js",
   "scripts": {
     "dev": "tsc && nodemon -r dotenv/config ./dist/server.js",
     "build": "npm i",
