@@ -14,7 +14,7 @@ export default function adminAccess(
     }
 
     next();
-  } catch (err) {
+  } catch (err: any) {
     return res.status(500).json({
       success: false,
       message: err,

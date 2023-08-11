@@ -24,7 +24,7 @@ export function limitRateByRole(
     }
 
     return limitRateForAdmin(req, res, next);
-  } catch (err) {
+  } catch (err: any) {
     return res.status(500).json({
       success: false,
       message: err,
@@ -51,7 +51,7 @@ export function limitSensitiveAction(
     }
 
     return limitRateForAdmin(req, res, next);
-  } catch (err) {
+  } catch (err: any) {
     return res.status(500).json({
       success: false,
       message: err,
