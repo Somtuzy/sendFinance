@@ -68,7 +68,7 @@ class AccountController {
       }
 
       if (senderAccount.balance < amount) {
-        return res.status(400).json({
+        return res.status(402).json({
           success: false,
           message: 'Insufficient funds',
         });
@@ -108,7 +108,7 @@ class AccountController {
         uniqueTag: senderTag,
       });
 
-      return res.status(201).json({
+      return res.status(200).json({
         success: true,
         message: `You have successfully sent ${amount} to ${recipientAccount.uniqueTag}!`,
         data: {
@@ -130,7 +130,7 @@ class AccountController {
       const { amount, pin } = req.body;
 
       if (!isValidObjectId(req.params.accountId)) {
-        return res.status(403).json({
+        return res.status(401).json({
           success: false,
           message: 'Invalid account id',
         });
@@ -157,7 +157,7 @@ class AccountController {
       }
 
       if (accountOwner._id.toString() !== isExistingAccount.userId.toString()) {
-        return res.status(400).json({
+        return res.status(403).json({
           success: false,
           message: 'You cannot fund an account that does not belong to you',
         });
@@ -165,7 +165,7 @@ class AccountController {
 
       const isValidPin = await verifyPin(pin, isExistingAccount.pin);
       if (!isValidPin) {
-        return res.status(400).json({
+        return res.status(401).json({
           success: false,
           message: 'Incorrect pin',
         });
