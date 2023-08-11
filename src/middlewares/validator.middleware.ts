@@ -1,9 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import _ from 'lodash';
-import { ICreateUser } from '../interfaces/user.interface';
 
 const validator =
-  (schema: { validateAsync: (arg0: ICreateUser) => any }, source = 'body') =>
+  (schema: { validateAsync: (arg0: any) => any }, source = 'body') =>
   async (req: Request, res: Response, next: NextFunction) => {
     try {
       const _source = source === 'body' ? req.body : req.query;
