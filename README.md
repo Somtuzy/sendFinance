@@ -23,10 +23,10 @@ Bale is a basic versioned bank API with the ability for users to sign up, signin
 
 ## How to Install And Run Code
 • Download the repository as a zip file or copy the repository url and clone to your pc with "git clone <repositoryUrL>" in your IDE terminal. <br>
-• Use npm install to install all dependencies. <br>
+• Use "npm install" to install all dependencies. <br>
 • Check the contents of the .env.example to set up your .env file <br>
 • Connect your MongoDB Atlas database with your connection url. <br>
-• Use node ./dist/server.js to run the program.
+• Use "tsc && node ./build/server.js" to run the program.
 • Download Postman, Swagger, Insomnia or use the Thunder Client extension on your IDE (preferably VS Code) to simulate running the code as a user on the client side. <br>
 
 
