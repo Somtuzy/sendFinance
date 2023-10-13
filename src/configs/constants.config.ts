@@ -7,10 +7,7 @@ export default {
   API_VERSION: '/api/v1',
   LOGGER: logger,
   HEALTH_CHECK: (req: Request, res: Response) => {
-    return res.status(200).json({
-      success: true,
-      message: 'App is working properly',
-    });
+    return res.statusCode(200)
   },
   SAY_HI: (req: Request, res: Response) => {
     return res.status(200).json({
