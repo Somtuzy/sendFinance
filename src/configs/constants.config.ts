@@ -8,7 +8,6 @@ export default {
   LOGGER: logger,
   HEALTH_CHECK: (req: Request, res: Response) => {
     return res.sendStatus(200)
-      },
   },
   SAY_HI: (req: Request, res: Response) => {
     return res.status(200).json({
